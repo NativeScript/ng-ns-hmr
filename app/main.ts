@@ -2,28 +2,43 @@ import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 
 import { AppModule } from "./app.module";
 
-const options = module['hot'] ? {
-    hmrModuleFactory: () => require("./app.module").AppModule
-}: {};
+// AOT
+// import { AppModuleNgFactory } from "./app.module.ngfactory";
 
-const bootstrap = () => platformNativeScriptDynamic(options).bootstrapModule(AppModule);
+import { AppOptions } from "nativescript-angular/platform-common";
+
+import "./livesync-navigation"
 
 declare const __webpack_require__;
-function hmrBootstrap() {
-    bootstrap();
 
-    global['__livesyncBackup'] = global.__onLiveSyncCore;
-    global.__onLiveSyncCore = function() {
+let options: AppOptions = {};
+if (module['hot']) {
+    const hmrUpdate = () => {
         const update = require('nativescript-dev-webpack/hot');
         const fileSystemModule = require("tns-core-modules/file-system");
         const applicationFiles = fileSystemModule.knownFolders.currentApp();
         update(__webpack_require__['h'](), filename => applicationFiles.getFile(filename));
     }
-    global.__onLiveSyncCore();
+
+    options.hmr = {
+        livesyncCallback: (platformLivesync) => {
+            console.log("livesyncCallback ")
+            hmrUpdate();
+            setTimeout(() => {
+                platformLivesync();
+            }, 0);
+        },
+        // AOT
+        moduleTypeFactory: () => AppModule,
+        // moduleTypeFactory: () => AppModuleNgFactory,
+    }
+
+    // Trigger initial update
+    hmrUpdate();
+
+    // AOT
+    // module['hot'].accept(["./app.module", "./app.module.ngfactory"]);
+    module['hot'].accept(["./app.module"])
 }
 
-if (module['hot']) {
-    hmrBootstrap();
-} else {
-    bootstrap();
-}
+platformNativeScriptDynamic(options).bootstrapModule(AppModule);

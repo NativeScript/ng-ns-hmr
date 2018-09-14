@@ -17,9 +17,7 @@ onAfterLivesync.subscribe(({ moduleRef, error }) => {
     if (moduleRef) {
         const router = <RouterExtensions>moduleRef.injector.get(RouterExtensions);
         if (router && cachedUrl) {
-            // setTimeout(() => {
-                router.navigateByUrl(cachedUrl, { animated: false });
-            // }, 0);
+            router.navigateByUrl(cachedUrl, { animated: false });
         }
     }
 });

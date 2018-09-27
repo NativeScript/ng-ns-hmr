@@ -21,16 +21,19 @@ if (module['hot']) {
     }
 
     options.hmr = {
-        livesyncCallback: (platformLivesync) => {
-            console.log("livesyncCallback ")
-            hmrUpdate();
-            setTimeout(() => {
-                platformLivesync();
-            }, 0);
-        },
         // AOT
         moduleTypeFactory: () => AppModule,
         // moduleTypeFactory: () => AppModuleNgFactory,
+        
+        livesyncCallback: (platformReboot) => {
+            console.log("livesyncCallback ")
+            hmrUpdate();
+
+            // Call platform reboot in a setTimeout because hmrUpdate is async
+            setTimeout(() => {
+                platformReboot();
+            }, 0);
+        },
     }
 
     // Trigger initial update

@@ -2,6 +2,8 @@
 </ActionBar>
 
 <StackLayout class="page">
+    <Button text="navigate" nsRouterLink="/lazy"></Button>
+    <ns-admin></ns-admin>
     <ListView [items]="items" class="list-group">
         <ng-template let-item="item">
             <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"

@@ -1,25 +1,24 @@
-# NativeScript Angular Template
+# Important!
 
-This template creates a "Hello, world" NativeScript app using TypeScript and Angular.
+This is a demo for an experimental feature.
+The feature is still work in progress.
+The API may change.
 
-You can create a new app that uses this template with either the `--template` option.
+## Enable HMR
 
-```
-tns create my-app-name --template tns-template-hello-world-ng
-```
-
-Or the `--ng` shorthand.
+1.  Install NativeScript CLI from the `next` tag.
 
 ```
-tns create my-app-name --ng
+npm install -g nativescript@next
 ```
 
-> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-hello-world-ng).
-
-If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
-
+2. Install node dependencies.
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-hello-world-ng.git#master
+npm install
 ```
 
-**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
+3. Run with the `hmr` flag:
+```
+tns run android --hmr
+```
+

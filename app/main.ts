@@ -20,7 +20,7 @@ if (module['hot']) {
         update(__webpack_require__['h'](), filename => applicationFiles.getFile(filename));
     }
 
-    options.hmr = {
+    options.hmrOptions = {
         // AOT
         moduleTypeFactory: () => AppModule,
         // moduleTypeFactory: () => AppModuleNgFactory,

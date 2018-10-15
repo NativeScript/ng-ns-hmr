@@ -1,47 +1,28 @@
 import { platformNativeScriptDynamic } from "nativescript-angular/platform";
+import { AppOptions } from "nativescript-angular/platform-common";
 
 import { AppModule } from "./app.module";
 
-// AOT
-// import { AppModuleNgFactory } from "./app.module.ngfactory";
-
-import { AppOptions } from "nativescript-angular/platform-common";
-
+// Optional - attach to livesync hooks and perfrom navigation
 import "./livesync-navigation"
-
-declare const __webpack_require__;
 
 let options: AppOptions = {};
 if (module['hot']) {
-    const hmrUpdate = () => {
-        const update = require('nativescript-dev-webpack/hot');
-        const fileSystemModule = require("tns-core-modules/file-system");
-        const applicationFiles = fileSystemModule.knownFolders.currentApp();
-        update(__webpack_require__['h'](), filename => applicationFiles.getFile(filename));
-    }
+    const hmrUpdate = require("nativescript-dev-webpack/hmr").hmrUpdate;
 
     options.hmrOptions = {
-        // AOT
         moduleTypeFactory: () => AppModule,
-        // moduleTypeFactory: () => AppModuleNgFactory,
-        
         livesyncCallback: (platformReboot) => {
-            console.log("livesyncCallback ")
+            console.log("HMR: Sync...")
             hmrUpdate();
-
-            // Call platform reboot in a setTimeout because hmrUpdate is async
-            setTimeout(() => {
-                platformReboot();
-            }, 0);
+            setTimeout(platformReboot, 0);
         },
     }
-
-    // Trigger initial update
     hmrUpdate();
 
-    // AOT
-    // module['hot'].accept(["./app.module", "./app.module.ngfactory"]);
+    // Path to your app module. You might have to change if your module is in deferent place
     module['hot'].accept(["./app.module"])
 }
 
+// Don't forget to pass the options when creating the platform
 platformNativeScriptDynamic(options).bootstrapModule(AppModule);

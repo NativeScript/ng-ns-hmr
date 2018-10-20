@@ -20,7 +20,8 @@ if (module['hot']) {
     }
     hmrUpdate();
 
-    // Path to your app module. You might have to change if your module is in deferent place
+    // Path to your app module.
+   // You might have to change it if your module is in a different place.
     module['hot'].accept(["./app.module"])
 }
 

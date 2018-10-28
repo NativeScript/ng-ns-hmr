@@ -10,7 +10,7 @@ const routes: Routes = [
     // { path: "", redirectTo: "/lazy", pathMatch: "full" },
     { path: "items", component: ItemsComponent },
     { path: "item/:id", component: ItemDetailComponent },
-    { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule' },
+    { path: 'lazy', loadChildren: '~/app/lazy/lazy.module#LazyModule' },
 
 ];
 

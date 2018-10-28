@@ -5,12 +5,12 @@
     "cli": {
     },
     "projects": {
-      "hello-world": {
+      "ns-ng-hmr": {
         "root": "",
-        "sourceRoot": ".",
+        "sourceRoot": "src",
         "projectType": "application",
         "prefix": "ns"
       }
     },
-    "defaultProject": "hello-world"
+    "defaultProject": "ns-ng-hmr"
   }

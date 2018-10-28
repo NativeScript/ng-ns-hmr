@@ -1,7 +1,7 @@
 import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 import { AppOptions } from "nativescript-angular/platform-common";
 
-import { AppModule } from "./app.module";
+import { AppModule } from "./app/app.module";
 
 // Optional - attach to livesync hooks and perfrom navigation
 import "./livesync-navigation"
@@ -22,7 +22,7 @@ if (module['hot']) {
 
     // Path to your app module.
    // You might have to change it if your module is in a different place.
-    module['hot'].accept(["./app.module"])
+    module['hot'].accept(["./app/app.module"])
 }
 
 // Don't forget to pass the options when creating the platform

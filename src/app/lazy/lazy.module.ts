@@ -13,5 +13,6 @@ import { AboutComponent } from './about/about.component';
 })
 export class LazyModule { }
 
-// We need to self-accept changes in lazy module
-module["hot"].accept();
+// The `lazy-ngmodule-hot-loader` adds a HMR handler
+// to every lazy loaded NgModule during a build.
+// No need to manually handle changes in lazy modules.

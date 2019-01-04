@@ -7,22 +7,18 @@ import { AppModule } from "./app/app.module";
 import "./livesync-navigation"
 
 let options: AppOptions = {};
-if (module['hot']) {
-    const hmrUpdate = require("nativescript-dev-webpack/hmr").hmrUpdate;
 
+if (module["hot"]) {
     options.hmrOptions = {
         moduleTypeFactory: () => AppModule,
         livesyncCallback: (platformReboot) => {
-            console.log("HMR: Sync...")
-            hmrUpdate();
             setTimeout(platformReboot, 0);
         },
     }
-    hmrUpdate();
 
     // Path to your app module.
-   // You might have to change it if your module is in a different place.
-    module['hot'].accept(["./app/app.module"])
+    // You might have to change it if your module is in a different place.
+    module["hot"].accept(["./app/app.module"], global["__hmrRefresh"]);
 }
 
 // Don't forget to pass the options when creating the platform

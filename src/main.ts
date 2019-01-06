@@ -18,7 +18,11 @@ if (module["hot"]) {
 
     // Path to your app module.
     // You might have to change it if your module is in a different place.
-    module["hot"].accept(["./app/app.module"], global["__hmrRefresh"]);
+    module["hot"].accept(["./app/app.module"], () => {
+        // Currently the context is needed only for application style modules.
+        const moduleContext = "{}";
+        global["__hmrRefresh"](moduleContext);
+    });
 }
 
 // Don't forget to pass the options when creating the platform

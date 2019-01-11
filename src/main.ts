@@ -20,8 +20,8 @@ if (module["hot"]) {
     // You might have to change it if your module is in a different place.
     module["hot"].accept(["./app/app.module"], () => {
         // Currently the context is needed only for application style modules.
-        const moduleContext = "{}";
-        global["__hmrRefresh"](moduleContext);
+        const moduleContext = {};
+        global["hmrRefresh"](moduleContext);
     });
 }
 

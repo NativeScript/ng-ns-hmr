@@ -3,7 +3,10 @@
 The HMR feature is still in beta.
 The API may change.
 
-For more information - check out the [nativescript-angular wiki page on enabling HMR](https://github.com/NativeScript/nativescript-angular/wiki/HMR) and the [design doc](https://goo.gl/NkYXga).
+For detailed information, please refer to:
+- NativeScript 5.2 HMR with Angular wiki [page](https://github.com/NativeScript/nativescript-angular/wiki/NativeScript-5.2-HMR-with-Angular)
+- HMR tracking [issue](https://github.com/NativeScript/NativeScript/issues/6398)
+- HMR design [document](https://goo.gl/NkYXga)
 
 ## Enable HMR
 

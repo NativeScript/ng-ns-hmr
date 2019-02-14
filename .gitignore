@@ -1,6 +1,6 @@
-platforms
-hooks
-node_modules
-
 app/**/*.js
 
+hooks
+node_modules/*
+!node_modules/nativescript-dev-webpack
+platforms

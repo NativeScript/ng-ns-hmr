@@ -7,6 +7,7 @@ import { ItemService } from "./item.service";
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./items.component.html",
+    styleUrls: ["./items.component.css"]
 })
 export class ItemsComponent implements OnInit {
     items: Item[];
@@ -14,6 +15,7 @@ export class ItemsComponent implements OnInit {
     constructor(private itemService: ItemService) { }
 
     ngOnInit(): void {
+        console.log("---> items");
         this.items = this.itemService.getItems();
     }
 }

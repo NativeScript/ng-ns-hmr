@@ -1,4 +1,4 @@
-<ActionBar title="My App" class="action-bar">
+<ActionBar title="My App">
 </ActionBar>
 
 <StackLayout class="page">
@@ -6,8 +6,7 @@
     <ns-admin></ns-admin>
     <ListView [items]="items" class="list-group">
         <ng-template let-item="item">
-            <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
-                class="list-group-item"></Label>
+            <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
         </ng-template>
     </ListView>
 </StackLayout>

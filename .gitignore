@@ -1,4 +1,4 @@
-app/**/*.js
+src/**/*.js
 
 hooks
 node_modules/*
